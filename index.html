@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Input</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 18px;
+            margin-bottom: 20px;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        p {
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Number Checker</h1>
+        <input type="number" id="numberInput" placeholder="Enter a number" oninput="checkNumber()">
+        <p id="message"></p>
+    </div>
+    <script>
+        function checkNumber() {
+            const input = document.getElementById('numberInput').value;
+            const message = document.getElementById('message');
+            
+            const num = parseInt(input);
+
+            if (isNaN(num)) {
+                message.textContent = "";
+                return;
+            }
+
+            if (num < 0) {
+                message.textContent = "Enter a positive value";
+            } else if (num % 2 === 0) {
+                message.textContent = `Next 3 even numbers: ${num + 2}, ${num + 4}, ${num + 6}`;
+            } else {
+                message.textContent = `Next 3 odd numbers: ${num + 2}, ${num + 4}, ${num + 6}`;
+            }
+        }
+    </script>
+</body>
+</html>
